@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recetas</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/style_recetas.css}">
+</head>
+<body>
+
+    <div class="cabecera" th:include="plantilla.html::cabecera"></div>
+
+    <main>
+        <h1 class="h1">Todas las recetas</h1>
+        
+        
+<form th:action="@{/menu_recetas}" method="get">
+        <label for="dificultad">Filtrar por Dificultad:</label>
+        <select name="dificultad" id="dificultad">
+            <option value="" th:text="'Todas las dificultades'">Todas las dificultades</option>
+            <option th:each="dificultad : ${atr_lista_dificultades}" th:value="${dificultad.id}" th:text="${dificultad.dificultad}"></option>
+        </select>
+        
+        <label for="tipo">Filtrar por Tipo:</label>
+        <select name="tipo" id="tipo">
+            <option value="" th:text="'Todos los tipos'">Todos los tipos</option>
+            <option th:each="tipo : ${atr_lista_tipos}" th:value="${tipo.id}" th:text="${tipo.tipo}"></option>
+        </select>
+        
+        <button type="submit">Filtrar</button>
+</form>
+
+
+        <div class="contenedor-tarjetas">
+            <div th:if="${atr_lista_recetas}" class="contenedor-tarjetas">
+                <div th:each="receta : ${atr_lista_recetas}" class="card">
+                    <a th:href="@{'/recetas/' + ${receta.id}}" class="card-link">
+                        <img th:src="${receta.imagenUrl}" alt="Imagen de la Receta"/>
+                        <div class="contenido-receta">
+                            <h3 th:text="${receta.nombreReceta}">Nombre de la Receta</h3>
+
+                            <p><span>🕔 Duración:</span> <span th:text="${receta.duracion}">Duración</span></p>
+                            <p><span>⭐ Dificultad:</span> <span th:text="${receta.dificultad.dificultad}">Dificultad</span></p>
+                        </div>
+                    </a>
+                    <div class="botones">
+                        <a th:href="@{'/recetas/edit/' + ${receta.id}}" class="boton-editar">Editar</a>
+                        <a th:href="@{'/recetas/delete/' + ${receta.id}}" class="boton-borrar" 
+                           onclick="return confirm('¿Quieres eliminar esta receta?');">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+            <div th:unless="${atr_lista_recetas}">
+                <p>No hay recetas disponibles.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

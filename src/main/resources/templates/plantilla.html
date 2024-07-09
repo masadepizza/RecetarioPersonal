@@ -1,0 +1,32 @@
+    <div class="cabecera" th:fragment="cabecera">
+
+        <div id="foto_menu">
+            <img th:src="@{/images/logo.png}" alt="" width="100px" height="100px">
+        </div>
+    
+        <nav>
+            <ul>
+                <li>
+                    <a th:href="@{/menu_recetas}" class="enlace_menu">Recetas</a>
+                </li>
+    
+                <li>
+                    <a th:href="@{/menu_nueva_receta}" class="enlace_menu">Nueva receta</a>
+                </li>
+    
+                <li>
+                    <a th:href="@{/menu_ruleta}" class="enlace_menu">Gira la ruleta</a>
+                </li>
+            </ul>
+        </nav>
+    
+    </div>
+    
+    
+    <div class="cabecera_editar_receta" th:fragment="cabecera_editar_receta">
+		
+		<div id="foto_menu_editar">
+			<img th:src="@{/images/logo.png}" width="200px" height="200px">	
+		</div>
+		
+	</div>
