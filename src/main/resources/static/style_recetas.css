@@ -22,6 +22,12 @@ main {
     padding: 2em;
 }
 
+
+form{
+	display: flex;
+	flex-direction: column;
+	
+}
 .contenedor-tarjetas {
     display: flex;
     flex-wrap: wrap;
