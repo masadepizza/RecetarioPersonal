@@ -23,11 +23,95 @@ main {
 }
 
 
-form{
-	display: flex;
-	flex-direction: column;
-	
+.filtros {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(213, 228, 205);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
 }
+
+.h5-filtros{
+	font-size: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    justify-content: center;
+    gap: 10px;
+}
+
+label {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+select {
+    height: 35px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    color: #333;
+}
+
+.boton-filtros {
+    margin-top: 15px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(128, 128, 201);;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+.boton-filtros:hover {
+	background-color:  rgb(54, 54, 129);
+}
+
+.boton-filtros:active {
+    background-color: #003d7a;
+}
+
+.filtros form input[type="text"], 
+.filtros form input[type="number"], 
+.filtros form input[type="date"] {
+    height: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.filtros form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filtros form .form-group label {
+    justify-content: flex-start;
+    font-size: 14px;
+}
+
+.filtros {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 .contenedor-tarjetas {
     display: flex;
     flex-wrap: wrap;
