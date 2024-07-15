@@ -25,7 +25,7 @@ main {
 
 .filtros {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     background-color: rgb(213, 228, 205);
     border-radius: 10px;
     padding: 20px;
@@ -35,7 +35,11 @@ main {
 
 .h5-filtros{
 	font-size: 20px;
+	cursor: pointer;
 }
+
+
+
 
 form {
     display: flex;

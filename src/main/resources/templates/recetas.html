@@ -14,26 +14,26 @@
 
     <main>
         <h1 class="h1">Todas las recetas</h1>
-        
-        <div class="filtros">
-			<h5 class="h5-filtros">Filtrar recetas por:</h5>
-	        <form th:action="@{/menu_recetas}" method="get">
-	            <label for="dificultad">Dificultad</label>
-	            <select name="dificultad" id="dificultad">
-	                <option value="" th:text="'Todas las dificultades'">Todas las dificultades</option>
-	                <option th:each="dificultad : ${atr_lista_dificultades}" th:value="${dificultad.id}" th:text="${dificultad.dificultad}"></option>
-	            </select>
-	            
-	            <label for="tipo">Tipo</label>
-	            <select name="tipo" id="tipo">
-	                <option value="" th:text="'Todos los tipos'">Todos los tipos</option>
-	                <option th:each="tipo : ${atr_lista_tipos}" th:value="${tipo.id}" th:text="${tipo.tipo}"></option>
-	            </select>
-	            
-	            <button type="submit" class="boton-filtros">Filtrar</button>
-	        </form>
+<div class="filtros">
+        <h5 class="h5-filtros" onclick="toggleFiltros()">Filtrar por...</h5>
+        <div id="filtros-form" class="filtros-form" style="display: none;">
+            <form th:action="@{/menu_recetas}" method="get">
+                <label for="dificultad">Dificultad</label>
+                <select name="dificultad" id="dificultad">
+                    <option value="" th:text="'Todas las dificultades'">Todas las dificultades</option>
+                    <option th:each="dificultad : ${atr_lista_dificultades}" th:value="${dificultad.id}" th:text="${dificultad.dificultad}"></option>
+                </select>
+                
+                <label for="tipo">Tipo</label>
+                <select name="tipo" id="tipo">
+                    <option value="" th:text="'Todos los tipos'">Todos los tipos</option>
+                    <option th:each="tipo : ${atr_lista_tipos}" th:value="${tipo.id}" th:text="${tipo.tipo}"></option>
+                </select>
+                
+                <button type="submit" class="boton-filtros">Filtrar</button>
+            </form>
         </div>
-
+    </div>
         <div class="contenedor-tarjetas">
             <div th:if="${atr_lista_recetas}" class="contenedor-tarjetas">
                 <div th:each="receta : ${atr_lista_recetas}" class="card">
@@ -51,12 +51,24 @@
                     </div>
                 </div>
             </div>
-            <div th:unless="${atr_lista_recetas}">
-                <p>No hay recetas disponibles.</p>
+            <div th:unless="${atr_lista_recetas.size() > 0}">
+                <p>No hay recetas :(</p>
             </div>
         </div>
     </main>
     
+    
+    
+    <script>
+        function toggleFiltros() {
+            var filtrosForm = document.getElementById("filtros-form");
+            if (filtrosForm.style.display === "none" || filtrosForm.style.display === "") {
+                filtrosForm.style.display = "block";
+            } else {
+                filtrosForm.style.display = "none";
+            }
+        }
+    </script>
     
     <!--para los toast al eliminar receta-->
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

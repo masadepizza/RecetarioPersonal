@@ -13,12 +13,14 @@
     
   <div class="cabecera" th:include="plantilla.html::cabecera"></div>
 
+<img class="flecha_atras" th:src="@{/images/flecha.png}" alt="Atrás" width="30px" height="30px" onclick="irAtras()" style="cursor: pointer;">
+
     <main>
 		
 		<div class="contenedor-receta">
 		
 	        <h1 th:text="${receta.nombreReceta}">
-				<img class="flecha_atras" th:src="@{/images/flecha.png}" alt="Atrás" width="30px" height="30px" onclick="irAtras()" style="cursor: pointer;">Nombre Receta
+				
 			</h1>
 			
 			
