@@ -161,16 +161,18 @@ public class MenuController {
 	public String obtenerRecetaAleatoria() {
 	    Receta recetaAleatoria = recetaRepo.obtenerRecetaAleatoria();
 	    return "<div class='card'>"
-        + "<img src='" + recetaAleatoria.getImagenUrl() + "' alt='Imagen de la Receta'/>"
-        + "<div class='contenido-receta'>"
-        + "<h3>" + recetaAleatoria.getNombreReceta() + "</h3>"
-        + "<p><span>🥕 Ingredientes:</span> " + recetaAleatoria.getIngredientes() + "</p>"
-        + "<p><span>🕔 Duración:</span> " + recetaAleatoria.getDuracion() + "</p>"
-        + "<p><span>⭐ Dificultad:</span> " + recetaAleatoria.getDificultad().getDificultad() + "</p>"
-        + "<p><span>🍲 Tipo:</span> " + recetaAleatoria.getTipo().getTipo() + "</p>"
-        + "</div>"
-        + "</div>";
+	        + "<a href='/recetas/" + recetaAleatoria.getId() + "' class='card-link'>" // pag. detalles
+	        + "<img src='" + recetaAleatoria.getImagenUrl() + "' alt='Imagen de la Receta'/>"
+	        + "<div class='contenido-receta'>"
+	        + "<h3>" + recetaAleatoria.getNombreReceta() + "</h3>"
+	        + "<p><span>🥕 Ingredientes:</span> " + recetaAleatoria.getIngredientes() + "</p>"
+	        + "<p><span>🕔 Duración:</span> " + recetaAleatoria.getDuracion() + "</p>"
+	        + "<p><span>⭐ Dificultad:</span> " + recetaAleatoria.getDificultad().getDificultad() + "</p>"
+	        + "</div>"
+	        + "</a>"
+	        + "</div>";
 	}
+
 
 	
 }

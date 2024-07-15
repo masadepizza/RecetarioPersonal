@@ -1,18 +1,33 @@
 body {
-    background-image: url(images/ruletafondo.jpg);
+
     background-size: cover; /* Para que la imagen cubra todo el fondo */
     background-attachment: fixed; /* Para que la imagen esté fijada */
     background-repeat: no-repeat; /* Para que la imagen no se repita */
     background-position: center; /* Para centrar la imagen */
+    background-color: lavender;
     margin: 0;
     padding: 0;
     color: #333;
     width: 100%;
 }
 
-.h1 {
+h1 {
     margin-left: 55px;
     margin-bottom: 30px;
+}
+
+.frase1{
+	display: flex;
+	justify-content: center;
+	font-size: 40px;
+}
+
+
+.flecha-gif {
+    display: block;
+    margin: 10px auto;
+    max-width: 15%; 
+    height: auto; 
 }
 
 main {
@@ -70,6 +85,12 @@ main {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
+}
+
+
+.card-link {
+    text-decoration: none; /* Esto eliminará el subrayado de los enlaces */
+    color: inherit; /* Esto hará que el enlace herede el color del texto circundante */
 }
 
 .card {
@@ -139,9 +160,7 @@ main {
     box-sizing: border-box;
 }
 
-body {
-    background-color: #010008;
-}
+
 
 .loader {
     height: 100%;
