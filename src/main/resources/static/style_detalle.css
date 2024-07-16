@@ -84,19 +84,22 @@ h1 {
 }
 
 
-.pasos-receta {
+.pasos-receta,
+.cantidades-receta {
     margin-top: 50px;
     display: flex;
     justify-content: center;
 }
 
-.pasos-receta h2 {
+.pasos-receta h2,
+.cantidades-receta h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
 }
 
-.pasos-receta ul {
+.pasos-receta ul,
+.cantidades-receta ul  {
     list-style-type: none;
     padding: 0;
     margin-top: 40px;

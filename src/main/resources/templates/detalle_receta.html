@@ -33,6 +33,14 @@
 	            </div>
 	        </div>
 	        
+	        
+	       <div class="cantidades-receta">
+			    <h2>Cantidades:</h2>
+			    <ul>
+			        <li th:if="${receta.cantidades} != ''" th:text="${receta.cantidades}" class="paso-item" data-step="1">Paso 1</li>
+			    </ul>
+			</div>
+	        
 			<div class="pasos-receta">
 			    <h2>Pasos:</h2>
 			    <ul>
