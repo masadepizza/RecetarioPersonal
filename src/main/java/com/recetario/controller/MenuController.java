@@ -40,35 +40,45 @@ public class MenuController {
 	
 	
 	@RequestMapping("/menu_recetas")
-    public String menu_recetas(Model model,
-                               @RequestParam(value = "dificultad", required = false) Integer dificultadId,
-                               @RequestParam(value = "tipo", required = false) Integer tipoId) {
-        List<Receta> listaRecetas;
-        
-        if (dificultadId != null && tipoId != null) {
-            // Filtrar por dificultad y tipo
-            listaRecetas = recetaRepo.findByDificultadIdAndTipoId(dificultadId, tipoId);
-        } else if (dificultadId != null) {
-            // Filtrar solo por dificultad
-            listaRecetas = recetaRepo.findByDificultadId(dificultadId);
-        } else if (tipoId != null) {
-            // Filtrar solo por tipo
-            listaRecetas = recetaRepo.findByTipoId(tipoId);
-        } else {
-            // Sin filtros, obtener todas las recetas
-            listaRecetas = recetaRepo.obtenerTodasRecetas();
-        }
-        
-        model.addAttribute("atr_lista_recetas", listaRecetas);
-        
-        List<Dificultad> listaDificultades = dificultadRepo.findAll();
-        model.addAttribute("atr_lista_dificultades", listaDificultades);
-        
-        List<Tipo> listaTipos = tipoRepo.findAll();
-        model.addAttribute("atr_lista_tipos", listaTipos);
-        
-        return "recetas";
-    }
+	public String menu_recetas(Model model,
+	                           @RequestParam(value = "dificultad", required = false) Integer dificultadId,
+	                           @RequestParam(value = "tipo", required = false) Integer tipoId,
+	                           @RequestParam(value = "ingrediente", required = false) String ingrediente) {
+	    List<Receta> listaRecetas;
+	    
+	    if (ingrediente != null && !ingrediente.isEmpty()) {
+	        if (dificultadId != null && tipoId != null) {
+	            listaRecetas = recetaRepo.findByIngredientesContainingIgnoreCaseAndDificultadIdAndTipoId(ingrediente, dificultadId, tipoId);
+	        } else if (dificultadId != null) {
+	            listaRecetas = recetaRepo.findByIngredientesContainingIgnoreCaseAndDificultadId(ingrediente, dificultadId);
+	        } else if (tipoId != null) {
+	            listaRecetas = recetaRepo.findByIngredientesContainingIgnoreCaseAndTipoId(ingrediente, tipoId);
+	        } else {
+	            listaRecetas = recetaRepo.findByIngredientesContainingIgnoreCase(ingrediente);
+	        }
+	    } else {
+	        if (dificultadId != null && tipoId != null) {
+	            listaRecetas = recetaRepo.findByDificultadIdAndTipoId(dificultadId, tipoId);
+	        } else if (dificultadId != null) {
+	            listaRecetas = recetaRepo.findByDificultadId(dificultadId);
+	        } else if (tipoId != null) {
+	            listaRecetas = recetaRepo.findByTipoId(tipoId);
+	        } else {
+	            listaRecetas = recetaRepo.obtenerTodasRecetas();
+	        }
+	    }
+	    
+	    model.addAttribute("atr_lista_recetas", listaRecetas);
+	    
+	    List<Dificultad> listaDificultades = dificultadRepo.findAll();
+	    model.addAttribute("atr_lista_dificultades", listaDificultades);
+	    
+	    List<Tipo> listaTipos = tipoRepo.findAll();
+	    model.addAttribute("atr_lista_tipos", listaTipos);
+	    
+	    return "recetas";
+	}
+
 
 	
 	

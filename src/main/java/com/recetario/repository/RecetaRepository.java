@@ -24,4 +24,12 @@ public interface RecetaRepository extends JpaRepository<Receta, Integer> {
     List<Receta> findByTipoId(int tipoId);
     
     List<Receta> findByDificultadIdAndTipoId(int dificultadId, int tipoId);
+    
+    List<Receta> findByIngredientesContainingIgnoreCase(String ingrediente);
+    
+    List<Receta> findByIngredientesContainingIgnoreCaseAndDificultadId(String ingrediente, int dificultadId);
+    
+    List<Receta> findByIngredientesContainingIgnoreCaseAndTipoId(String ingrediente, int tipoId);
+    
+    List<Receta> findByIngredientesContainingIgnoreCaseAndDificultadIdAndTipoId(String ingrediente, int dificultadId, int tipoId);
 }

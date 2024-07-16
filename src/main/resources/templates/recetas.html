@@ -18,6 +18,10 @@
         <h5 class="h5-filtros" onclick="toggleFiltros()">Filtrar por...</h5>
         <div id="filtros-form" class="filtros-form" style="display: none;">
             <form th:action="@{/menu_recetas}" method="get">
+				
+				<label for="ingrediente">Ingrediente</label>
+	            <input type="text" name="ingrediente" id="ingrediente" placeholder="Buscar por ingrediente">
+            
                 <label for="dificultad">Dificultad</label>
                 <select name="dificultad" id="dificultad">
                     <option value="" th:text="'Todas las dificultades'">Todas las dificultades</option>
