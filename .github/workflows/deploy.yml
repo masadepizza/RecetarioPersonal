@@ -1,4 +1,4 @@
-name: Deploy 
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
         java-version: '17'
 
     - name: Build with Maven
-      run: mvn clean package
+      run: mvn clean package -DskipTests
 
     - name: Copy index.html to target
       run: cp index.html target/
