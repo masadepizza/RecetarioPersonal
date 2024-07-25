@@ -1,147 +1,157 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Recetas</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
-    <link rel="stylesheet" th:href="@{/style_recetas.css}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	<meta charset="UTF-8">
+	<title>Recetas</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<link rel="stylesheet" th:href="@{/style_recetas.css}">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
+
 <body>
 
-    <div class="cabecera" th:include="plantilla.html::cabecera"></div>
+	<div class="cabecera" th:include="plantilla.html::cabecera"></div>
 
-    <main>
-        <h1 class="h1">Todas las recetas</h1>
-<div class="filtros">
-        <h5 class="h5-filtros" onclick="toggleFiltros()">Filtrar por...</h5>
-        <div id="filtros-form" class="filtros-form" style="display: none;">
-            <form th:action="@{/menu_recetas}" method="get">
-				
-				<label for="ingrediente">Ingrediente</label>
-	            <input type="text" name="ingrediente" id="ingrediente" placeholder="Buscar por ingrediente">
-            
-                <label for="dificultad">Dificultad</label>
-                <select name="dificultad" id="dificultad">
-                    <option value="" th:text="'Todas las dificultades'">Todas las dificultades</option>
-                    <option th:each="dificultad : ${atr_lista_dificultades}" th:value="${dificultad.id}" th:text="${dificultad.dificultad}"></option>
-                </select>
-                
-                <label for="tipo">Tipo</label>
-                <select name="tipo" id="tipo">
-                    <option value="" th:text="'Todos los tipos'">Todos los tipos</option>
-                    <option th:each="tipo : ${atr_lista_tipos}" th:value="${tipo.id}" th:text="${tipo.tipo}"></option>
-                </select>
-                
-                <button type="submit" class="boton-filtros">Filtrar</button>
-            </form>
-        </div>
-    </div>
-        <div class="contenedor-tarjetas">
-            <div th:if="${atr_lista_recetas}" class="contenedor-tarjetas">
-                <div th:each="receta : ${atr_lista_recetas}" class="card">
-                    <a th:href="@{'/recetas/' + ${receta.id}}" class="card-link">
-                        <img th:src="${receta.imagenUrl}" alt="Imagen de la Receta"/>
-                        <div class="contenido-receta">
-                            <h3 th:text="${receta.nombreReceta}">Nombre de la Receta</h3>
-                            <p><span>🕔 Duración:</span> <span th:text="${receta.duracion}">Duración</span></p>
-                            <p><span>⭐ Dificultad:</span> <span th:text="${receta.dificultad.dificultad}">Dificultad</span></p>
-                        </div>
-                    </a>
-                    <div class="botones">
+	<main>
+		<h1 class="h1">Todas las recetas</h1>
+		<div class="filtros">
+			<h5 class="h5-filtros" onclick="toggleFiltros()">Filtrar por...</h5>
+			<div id="filtros-form" class="filtros-form" style="display: none;">
+				<form th:action="@{/menu_recetas}" method="get">
+
+					<label for="ingrediente">Ingrediente</label>
+					<input type="text" name="ingrediente" id="ingrediente" placeholder="Buscar por ingrediente">
+
+					<label for="dificultad">Dificultad</label>
+					<select name="dificultad" id="dificultad">
+						<option value="" th:text="'Todas las dificultades'">Todas las dificultades</option>
+						<option th:each="dificultad : ${atr_lista_dificultades}" th:value="${dificultad.id}"
+							th:text="${dificultad.dificultad}"></option>
+					</select>
+
+					<label for="tipo">Tipo</label>
+					<select name="tipo" id="tipo">
+						<option value="" th:text="'Todos los tipos'">Todos los tipos</option>
+						<option th:each="tipo : ${atr_lista_tipos}" th:value="${tipo.id}" th:text="${tipo.tipo}">
+						</option>
+					</select>
+
+					<button type="submit" class="boton-filtros">Filtrar</button>
+				</form>
+			</div>
+		</div>
+		<div class="contenedor-tarjetas">
+			<div th:if="${atr_lista_recetas}" class="contenedor-tarjetas">
+				<div th:each="receta : ${atr_lista_recetas}" class="card">
+					<a th:href="@{'/recetas/' + ${receta.id}}" class="card-link">
+						<img th:src="${receta.imagenUrl}" alt="Imagen de la Receta" />
+						<div class="contenido-receta">
+							<h3 th:text="${receta.nombreReceta}">Nombre de la Receta</h3>
+							<p><span>🕔 Duración:</span> <span th:text="${receta.duracion}">Duración</span></p>
+							<p><span>⭐ Dificultad:</span> <span
+									th:text="${receta.dificultad.dificultad}">Dificultad</span></p>
+						</div>
+					</a>
+					<div class="botones">
 						<a th:href="@{'/recetas/edit/' + ${receta.id}}" class="boton-editar">Editar</a>
-                        <a th:href="@{'/recetas/delete/' + ${receta.id}}" class="boton-borrar">Eliminar</a>
-                    </div>
-                </div>
-            </div>
-            <div th:unless="${atr_lista_recetas.size() > 0}">
-                <p>No hay recetas :(</p>
-            </div>
-        </div>
-    </main>
-    
-    
-    
-    <script>
-        function toggleFiltros() {
-            var filtrosForm = document.getElementById("filtros-form");
-            if (filtrosForm.style.display === "none" || filtrosForm.style.display === "") {
-                filtrosForm.style.display = "block";
-            } else {
-                filtrosForm.style.display = "none";
-            }
-        }
-    </script>
-    
-    <!--para los toast al eliminar receta-->
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript">
-        function showDeleteConfirmation(url) {
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: "No podrás revertir esto.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sí, eliminar',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch(url, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            Toastify({
-                                text: "Receta eliminada.",
-                                duration: 3000,
-                                close: true,
-                                gravity: "top",
-                                position: "left",
-                                stopOnFocus: true,
-                                style: {
-                                    background: "linear-gradient(to right, #00b09b, #96c93d)",
-                                }
-                            }).showToast();
-                            setTimeout(() => location.reload(), 1500);  // recargar pag.
-                        } else {
-                            throw new Error('Error al eliminar la receta');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        Toastify({
-                            text: "Error al eliminar la receta",
-                            duration: 3000,
-                            close: true,
-                            gravity: "top",
-                            position: "left",
-                            stopOnFocus: true,
-                            style: {
-                                background: "linear-gradient(to right, #b00000, #c93d3d)",
-                            }
-                        }).showToast();
-                    });
-                }
-            });
-        }
+						<a th:href="@{'/recetas/delete/' + ${receta.id}}" class="boton-borrar">Eliminar</a>
+					</div>
+				</div>
+			</div>
+			<div th:unless="${atr_lista_recetas.size() > 0}">
+				<p>No hay recetas :(</p>
+			</div>
+		</div>
 
-        document.querySelectorAll('.boton-borrar').forEach(function(boton) {
-            boton.addEventListener('click', function(event) {
-                event.preventDefault();
-                const url = this.getAttribute('href');
-                showDeleteConfirmation(url);
-            });
-        });
-    </script>
-    
+
+	</main>
+
+
+
+	<script>
+		function toggleFiltros() {
+			var filtrosForm = document.getElementById("filtros-form");
+			if (filtrosForm.style.display === "none" || filtrosForm.style.display === "") {
+				filtrosForm.style.display = "block";
+			} else {
+				filtrosForm.style.display = "none";
+			}
+		}
+	</script>
+
+	<!--para los toast al eliminar receta-->
+	<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script type="text/javascript">
+		function showDeleteConfirmation(url) {
+			Swal.fire({
+				title: '¿Estás seguro?',
+				text: "No podrás revertir esto.",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Sí, eliminar',
+				cancelButtonText: 'Cancelar'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					fetch(url, {
+						method: 'GET',
+						headers: {
+							'Content-Type': 'application/json',
+						}
+					})
+						.then(response => {
+							if (response.ok) {
+								Toastify({
+									text: "Receta eliminada.",
+									duration: 3000,
+									close: true,
+									gravity: "top",
+									position: "left",
+									stopOnFocus: true,
+									style: {
+										background: "linear-gradient(to right, #00b09b, #96c93d)",
+									}
+								}).showToast();
+								setTimeout(() => location.reload(), 1500);  // recargar pag.
+							} else {
+								throw new Error('Error al eliminar la receta');
+							}
+						})
+						.catch(error => {
+							console.error('Error:', error);
+							Toastify({
+								text: "Error al eliminar la receta",
+								duration: 3000,
+								close: true,
+								gravity: "top",
+								position: "left",
+								stopOnFocus: true,
+								style: {
+									background: "linear-gradient(to right, #b00000, #c93d3d)",
+								}
+							}).showToast();
+						});
+				}
+			});
+		}
+
+		document.querySelectorAll('.boton-borrar').forEach(function (boton) {
+			boton.addEventListener('click', function (event) {
+				event.preventDefault();
+				const url = this.getAttribute('href');
+				showDeleteConfirmation(url);
+			});
+		});
+	</script>
+
+	<div class="footer" th:include="plantilla.html::footer"></div>
+
 </body>
+
 </html>
 
 
