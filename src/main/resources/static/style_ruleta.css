@@ -1,5 +1,5 @@
 body {
-
+	background-image: url(images/fondiruleta.PNG);
     background-size: cover; /* Para que la imagen cubra todo el fondo */
     background-attachment: fixed; /* Para que la imagen esté fijada */
     background-repeat: no-repeat; /* Para que la imagen no se repita */
