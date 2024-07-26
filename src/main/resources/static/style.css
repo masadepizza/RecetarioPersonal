@@ -27,7 +27,8 @@
     width: 55px;
 }
 
-nav {
+nav,
+footer {
     flex: 1 1 auto; 
     padding: 0;
     

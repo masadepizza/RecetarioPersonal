@@ -41,11 +41,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 350px;
+    margin-bottom: 30px;
 }
 
 .foto_pizza {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     transition: transform 0.5s;
 }
 
@@ -91,8 +93,8 @@ main {
 
 
 .card-link {
-    text-decoration: none; /* Esto eliminará el subrayado de los enlaces */
-    color: inherit; /* Esto hará que el enlace herede el color del texto circundante */
+    text-decoration: none;
+    color: inherit;
 }
 
 .card {
@@ -153,6 +155,8 @@ main {
 }
 
 
+
+/*LOADER*/
 
 *,
 *:before,
