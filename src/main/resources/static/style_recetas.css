@@ -4,8 +4,6 @@ body, html {
     background-attachment: fixed; /* Para que la imagen esté fijada */
     background-repeat: no-repeat; /* Para que la imagen no se repita */
     background-position: center; /* Para centrar la imagen */
-    
-    background-color: lavender;
 
     margin: 0;
     padding: 0;
@@ -19,9 +17,9 @@ body, html {
 body{
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
-	
+	min-height: 100vh;	
 }
+
 .container {
     display: flex;
     flex-direction: column;
