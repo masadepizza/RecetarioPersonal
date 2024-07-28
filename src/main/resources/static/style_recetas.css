@@ -175,11 +175,11 @@ a {
 .card-link {
     display: flex;
     flex-direction: column;
-    color: inherit; /* Asegura que el enlace no cambie el color del texto */
+    color: inherit; /* para que no cambie el color del texto */
 }
 
 .contenido-receta {
-    flex: 0; /* Permite que el contenido de la receta crezca */
+    flex: 0; /* para que el contenido de la card crezca */
 }
 
 .contenido-receta h3 {
