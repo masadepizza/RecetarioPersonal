@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Receta</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/style_actualizar_receta.css}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	
+	<div class="loader">
+        <div class="egg"></div>
+        <div class="loading-text">Cargando...</div>
+    </div>
+
+    <script>
+        $(window).on('load', function(){
+            $(".loader").fadeOut(3000);
+            $("body").fadeIn(1500);
+        });
+    </script>
+
+<div class="cabecera" th:include="plantilla.html::cabecera"></div>
+
+<h1 class="h1"> 
+	<img class="flecha_atras" th:src="@{/images/flecha.png}" alt="Atrás" width="30px" height="30px" onclick="irAtras()" style="cursor: pointer;">Actualizar Receta
+</h1>
+    <main>
+        
+        <form th:action="@{'/recetas/update/' + ${receta.id}}" th:object="${receta}" method="post">
+            <div>
+                <label for="nombreReceta">Nombre</label>
+                <input type="text" id="nombreReceta" th:field="*{nombreReceta}" required />
+            </div>
+            <div>
+                <label for="ingredientes">Ingredientes</label>
+                <textarea id="ingredientes" th:field="*{ingredientes}" required></textarea>
+            </div>
+            <div>
+                <label for="cantidades">Cantidades</label>
+                <textarea id="cantidades" th:field="*{cantidades}" required></textarea>
+            </div>
+            <div>
+                <label for="duracion">Duración</label>
+                <input type="text" id="duracion" th:field="*{duracion}" required />
+            </div>
+            <div>
+                <label for="dificultad">Dificultad</label>
+                <select id="dificultad" th:field="*{dificultad}">
+                    <option th:each="dificultad : ${dificultades}" th:value="${dificultad.id}" th:text="${dificultad.dificultad}"></option>
+                </select>
+            </div>
+            <div>
+                <label for="tipo">Tipo</label>
+                <select id="tipo" th:field="*{tipo}">
+                    <option th:each="tipo : ${tipos}" th:value="${tipo.id}" th:text="${tipo.tipo}"></option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="racion">Raciones</label>
+                <select id="racion" th:field="*{racion}">
+                    <option th:each="racion : ${raciones}" th:value="${racion.id}" th:text="${racion.raciones}"></option>
+                </select>
+            </div>
+            <div>
+                <label for="imagenUrl">URL de la imagen</label>
+                <input type="text" id="imagenUrl" th:field="*{imagenUrl}" />
+            </div>
+            
+            
+            <div class="pasosContainer">
+                <label for="pasos">Pasos (mín. 2)</label>
+                <textarea id="paso1" th:field="*{paso1}" placeholder="Paso #1" required></textarea>
+                <textarea id="paso2" th:field="*{paso2}" placeholder="Paso #2" required></textarea>
+                <textarea id="paso3" th:field="*{paso3}" placeholder="Paso #3" ></textarea>
+                <textarea id="paso4" th:field="*{paso4}" placeholder="Paso #4" ></textarea>
+                <textarea id="paso5" th:field="*{paso5}" placeholder="Paso #5"></textarea>
+                <textarea id="paso6" th:field="*{paso6}" placeholder="Paso #6" ></textarea>
+                <textarea id="paso7" th:field="*{paso7}" placeholder="Paso #7" ></textarea>
+                <textarea id="paso8" th:field="*{paso8}" placeholder="Paso #8" ></textarea>
+                <textarea id="paso9" th:field="*{paso9}" placeholder="Paso #9" ></textarea>
+                <textarea id="paso10" th:field="*{paso10}" placeholder="Paso #10" ></textarea>
+            </div>
+            
+            <div>
+                <button class="boton_editar" type="submit">Actualizar</button>
+                <button class="boton_cancelar" type="button" onclick="window.location.href='/menu_recetas'">Cancelar</button>
+            </div>
+        </form>
+        
+    </main>
+    
+    <script>
+	    function irAtras() {
+	        window.history.back();
+	    }
+	</script>
+	
+	<div class="footer" th:include="plantilla.html::footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Detalle de la Receta</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<link rel="stylesheet" th:href="@{/style_detalle.css}">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+
+	<div class="cabecera" th:include="plantilla.html::cabecera"></div>
+
+	<img class="flecha_atras" th:src="@{/images/flecha.png}" alt="Atrás" width="30px" height="30px" onclick="irAtras()"
+		style="cursor: pointer;">
+
+	<main>
+
+		<div class="contenedor-receta">
+
+			<h1 th:text="${receta.nombreReceta}"></h1>
+
+
+			<div class="detalle-receta">
+				<img th:src="${receta.imagenUrl}" alt="Imagen de la Receta" />
+				<div class="info-receta">
+					<p><span>🥕 Ingredientes:</span> <span th:text="${receta.ingredientes}">Ingredientes</span></p>
+					<p><span>🕔 Duración:</span> <span th:text="${receta.duracion}">Duración</span></p>
+					<p><span>⭐ Dificultad:</span> <span th:text="${receta.dificultad.dificultad}">Dificultad</span></p>
+					<p><span>🍲 Tipo:</span> <span th:text="${receta.tipo.tipo}">Tipo</span></p>
+					<p><span>🍴 Raciones:</span> <span th:text="${receta.racion.raciones}">Racion</span></p>
+				</div>
+			</div>
+
+
+			<div class="cantidades-receta">
+				<h2>Cantidades:</h2>
+				<ul>
+					<li th:if="${receta.cantidades} != ''" th:text="${receta.cantidades}" class="paso-item"
+						data-step="1">Paso 1</li>
+				</ul>
+			</div>
+
+			<div class="pasos-receta">
+				<h2>Pasos:</h2>
+				<ul>
+					<li th:if="${receta.paso1} != ''" th:text="${receta.paso1}" class="paso-item" data-step="1">Paso 1
+					</li>
+					<li th:if="${receta.paso2} != ''" th:text="${receta.paso2}" class="paso-item" data-step="2">Paso 2
+					</li>
+					<li th:if="${receta.paso3} != ''" th:text="${receta.paso3}" class="paso-item" data-step="3">Paso 3
+					</li>
+					<li th:if="${receta.paso4} != ''" th:text="${receta.paso4}" class="paso-item" data-step="4">Paso 4
+					</li>
+					<li th:if="${receta.paso5} != ''" th:text="${receta.paso5}" class="paso-item" data-step="5">Paso 5
+					</li>
+					<li th:if="${receta.paso6} != ''" th:text="${receta.paso6}" class="paso-item" data-step="6">Paso 6
+					</li>
+					<li th:if="${receta.paso7} != ''" th:text="${receta.paso7}" class="paso-item" data-step="7">Paso 7
+					</li>
+					<li th:if="${receta.paso8} != ''" th:text="${receta.paso8}" class="paso-item" data-step="8">Paso 8
+					</li>
+					<li th:if="${receta.paso9} != ''" th:text="${receta.paso9}" class="paso-item" data-step="9">Paso 9
+					</li>
+					<li th:if="${receta.paso10} != ''" th:text="${receta.paso10}" class="paso-item" data-step="10">Paso
+						10</li>
+				</ul>
+			</div>
+
+
+			<div class="botones">
+				<a th:href="@{'/recetas/edit/' + ${receta.id}}" class="boton-editar">Editar</a>
+				<a th:href="@{'/menu_recetas'}" class="boton-volver">Volver</a>
+			</div>
+
+		</div>
+
+	</main>
+
+
+	<script>
+		function irAtras() {
+			window.history.back();
+		}
+	</script>
+	<div class="footer" th:include="plantilla.html::footer"></div>
+</body>
+
+</html>

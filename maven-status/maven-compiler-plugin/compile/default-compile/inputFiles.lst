@@ -1,0 +1,12 @@
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/SprRecetarioPersonalApplication.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/controller/MainController.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/controller/MenuController.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/model/Dificultad.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/model/Racion.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/model/Receta.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/model/Tipo.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/repository/DificultadRepository.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/repository/RacionRepository.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/repository/RecetaRepository.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/repository/TipoRepository.java
+/home/runner/work/RecetarioPersonal/RecetarioPersonal/src/main/java/com/recetario/service/RecetaService.java

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Receta</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/style_nueva_receta.css}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	
+    <div class="loader">
+        <div class="egg"></div>
+        <div class="loading-text">Cargando...</div>
+    </div>
+
+    <script>
+        $(window).on('load', function(){
+            $(".loader").fadeOut(3000);
+            $("body").fadeIn(1500);
+        });
+    </script>
+
+    <div class="cabecera" th:include="plantilla.html::cabecera"></div>
+
+
+<h1>Añade una receta</h1>
+    <main>
+        
+        <form action="#" th:action="@{/guardar_receta}" method="post" th:object="${objeto_entidad}">
+			
+            <br>
+            <input type="text" id="nombreReceta" name="nombreReceta" th:field="*{nombreReceta}" placeholder="🍽️Nombre de la receta" required>
+            </br>
+            
+            <br>
+            <textarea id="ingredientes" name="ingredientes" th:field="*{ingredientes}" placeholder="🥕Ingredientes" required></textarea>
+            </br>
+            
+            <br>
+            <textarea id="cantidades" name="cantidades" th:field="*{cantidades}" placeholder="🥕Cantidades" required></textarea>
+            </br>
+            
+            <br>
+            <input type="text" id="duracion" name="duracion" th:field="*{duracion}" placeholder="🕔Duración" required>
+            </br>
+            
+            <label for="dificultad">Dificultad</label>
+        <select name="dificultad" th:field="*{dificultad.id}" id="difficulty" required>
+            <option th:each="elemento : ${atr_lista_dificultades}" th:value="${elemento.id}"
+            	th:text="${elemento.dificultad}"></option>
+        </select>
+        
+            <label for="tipo">Tipo</label>
+        <select name="tipo" th:field="*{tipo.id}" id="tipo" required>
+            <option th:each="elemento : ${atr_lista_tipos}" th:value="${elemento.id}"
+            	th:text="${elemento.tipo}"></option>
+        </select>
+        
+            <label for="racion">Raciones</label>
+        <select name="racion" th:field="*{racion.id}" id="racion" required>
+            <option th:each="elemento : ${atr_lista_raciones}" th:value="${elemento.id}"
+            	th:text="${elemento.raciones}"></option>
+        </select>
+        
+        <br>
+            <input type="text" id="imagenUrl" name="imagenUrl" th:field="*{imagenUrl}" placeholder="📷Foto del plato" required><br>
+            
+            
+            
+            <div id="pasosContainer">
+				<label for="pasos">Pasos (mín. 2)</label>
+                <textarea type="text" name="paso1" th:field="*{paso1}" placeholder="Paso #1" required></textarea>
+                <textarea type="text" name="paso2" th:field="*{paso2}" placeholder="Paso #2" required></textarea>
+				<textarea type="text" name="paso3" th:field="*{paso3}" placeholder="Paso #3" ></textarea>
+				<textarea type="text" name="paso4" th:field="*{paso4}" placeholder="Paso #4" ></textarea>
+				<textarea type="text" name="paso5" th:field="*{paso5}" placeholder="Paso #5" ></textarea>
+				<textarea type="text" name="paso6" th:field="*{paso6}" placeholder="Paso #6" ></textarea>
+				<textarea type="text" name="paso7" th:field="*{paso7}" placeholder="Paso #7" ></textarea>
+				<textarea type="text" name="paso8" th:field="*{paso8}" placeholder="Paso #8" ></textarea>
+				<textarea type="text" name="paso9" th:field="*{paso9}" placeholder="Paso #9" ></textarea>
+				<textarea type="text" name="paso10" th:field="*{paso10}" placeholder="Paso #10" ></textarea>
+            </div>
+            
+            
+            <input type="submit" value="Guardar receta">
+            <button class="boton_cancelar" type="button" onclick="window.location.href='/menu_recetas'">Cancelar</button>
+        </form>
+    </main>
+    
+    <div class="footer" th:include="plantilla.html::footer"></div>
+</body>
+</html>

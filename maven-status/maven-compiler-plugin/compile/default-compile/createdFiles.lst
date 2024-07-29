@@ -1,0 +1,12 @@
+com/recetario/repository/RacionRepository.class
+com/recetario/repository/DificultadRepository.class
+com/recetario/model/Tipo.class
+com/recetario/repository/TipoRepository.class
+com/recetario/controller/MenuController.class
+com/recetario/service/RecetaService.class
+com/recetario/model/Receta.class
+com/recetario/repository/RecetaRepository.class
+com/recetario/model/Racion.class
+com/recetario/controller/MainController.class
+com/recetario/SprRecetarioPersonalApplication.class
+com/recetario/model/Dificultad.class

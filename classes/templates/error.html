@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="cabecera" th:include="plantilla.html::cabecera"></div>
+    <main>
+        <h1>Error</h1>
+        <p th:text="${errorMensaje}">Ha ocurrido un error.</p>
+        <a href="/menu_recetas">Volver a la lista de recetas</a>
+    </main>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ruleta de Recetas</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<link rel="stylesheet" th:href="@{/style_ruleta.css}">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<div class="loader">
+		<div class="egg"></div>
+		<div class="loading-text">Cargando...</div>
+	</div>
+
+	<script>
+		$(window).on('load', function () {
+			$(".loader").fadeOut(3000);
+			$("body").fadeIn(1500);
+		});
+	</script>
+
+<div class="container">
+	<div class="cabecera" th:include="plantilla.html::cabecera"></div>
+
+	<main>
+		<h1>Ruleta de recetas</h1>
+
+		<p class="frase1">¿No sabes qué cocinar? ¡Tira de la ruleta! </p>
+
+		<img th:src="@{/images/flechagif.gif}" alt="Flecha GIF" class="flecha-gif">
+
+
+
+		<div class="pizza-container">
+			<img class="foto_pizza" th:src="@{/images/pizza.png}">
+			<button id="btnRecetaAleatoria">Receta aleatoria</button>
+		</div>
+
+		<div id="recetaAleatoria" class="overlay"></div>
+	</main>
+
+	<script>
+		document.getElementById('btnRecetaAleatoria').addEventListener('click', function () { //el delay
+			var pizza = document.querySelector('.foto_pizza');
+			pizza.classList.add('spin');  // girara al clicar
+
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', '/receta_aleatoria', true);
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					setTimeout(function () {
+						document.getElementById('recetaAleatoria').innerHTML = '<button class="close-btn" onclick="closeCard()">X</button>' + xhr.responseText;
+						document.getElementById('recetaAleatoria').style.display = 'flex';
+						pizza.classList.remove('spin');  // el spin se va dsps del delay
+					}, 2000); // el delay
+				}
+			};
+			xhr.send();
+		});
+
+		function closeCard() {
+			document.getElementById('recetaAleatoria').style.display = 'none';
+		}
+	</script>
+	<div class="footer" th:include="plantilla.html::footer"></div>
+</div>
+</body>
+
+</html>
+
+
+

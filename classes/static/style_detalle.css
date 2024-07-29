@@ -1,0 +1,151 @@
+:root {
+	--colorFondoPag: lavender;
+	--colorh1:#343a40;
+	--colorTexto: #333;
+	--colorTextoPasos: #666;
+	--colorBtnEditar: rgb(142, 186, 124);
+	--hoverEditar: #218838;
+	--colorBtnVolver: rgb(128, 128, 201);
+	--hoverVolver: rgb(54, 54, 129);
+	--colorTextoBtns: aliceblue;
+	--colorPasos: rgb(88, 167, 120);
+	--colorNumPasos: #fff;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--colorFondoPag);
+	color: var(--colorTexto);
+	width: 100%;
+}
+
+main {
+	padding: 2em;
+	background-color: var(--colorFondoPag);
+}
+
+.flecha_atras {
+	position: relative;
+	top: 95px;
+	margin-left: 35px;
+	background-color: var(--colorFondoPag);
+}
+
+h1 {
+	color: var(--colorh1);
+	margin-left: 65px;
+	margin-bottom: 30px;
+	margin-top: 25px;
+}
+
+.detalle-receta {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.detalle-receta img {
+	width: 50%;
+	border-radius: 8px;
+	margin-right: 20px;
+}
+
+.info-receta {
+	max-width: 50%;
+}
+
+.info-receta p {
+	color: var(--colorTextoPasos);
+	margin-bottom: 12px;
+}
+
+.boton-editar {
+	background-color: var(--colorBtnEditar);
+	margin-right: 10px;
+}
+
+.boton-volver {
+	background-color: var(--colorBtnVolver);
+}
+
+.botones {
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+
+}
+
+
+.botones a {
+	transition: background-color 0.3s;
+}
+
+.boton-editar,
+.boton-volver {
+	padding: 10px;
+	border-radius: 8px;
+	text-decoration: none;
+	color: var(--colorTextoBtns);
+}
+
+.boton-volver:hover {
+	background-color: var(--hoverVolver);
+}
+
+.boton-editar:hover {
+	background-color: var(--hoverEditar);
+}
+
+
+.pasos-receta,
+.cantidades-receta {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+.pasos-receta h2,
+.cantidades-receta h2 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.pasos-receta ul,
+.cantidades-receta ul {
+	list-style-type: none;
+	padding: 0;
+	margin-top: 40px;
+}
+
+.paso-item {
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	margin-bottom: 10px;
+	padding: 15px;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	position: relative;
+}
+
+.paso-item::before {
+	content: attr(data-step);
+	background-color: var(--colorPasos);
+	border-radius: 50%;
+	color: var(--colorNumPasos);
+	display: inline-block;
+	font-weight: bold;
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin-right: 15px;
+	position: absolute;
+	left: -45px;
+	top: 50%;
+	transform: translateY(-50%);
+}
