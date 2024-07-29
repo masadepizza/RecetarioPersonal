@@ -2,6 +2,7 @@
 	--colorBtnRuleta: rgb(142, 186, 124);
 	--hoverBtnRuleta: #218838;
 	--colorTextoBtn: aliceblue;
+	--colorh1:#343a40;
 }
 
 body,
@@ -44,6 +45,7 @@ main {
 h1 {
 	margin-left: 55px;
 	margin-bottom: 30px;
+	color: var(--colorh1);
 }
 
 .frase1 {

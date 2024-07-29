@@ -10,6 +10,7 @@
 	--colorBtnFiltros: rgb(128, 128, 201);
 	--colorTextoBtns: aliceblue;
 	--fondoCard: #fff;
+	--colorh1:#343a40;
 }
 
 
@@ -49,6 +50,7 @@ body {
 	font-size: 40px;
 	margin-left: 55px;
 	margin-bottom: 30px;
+	color: var(--colorh1);
 }
 
 main {
