@@ -59,39 +59,61 @@ main {
 }
 
 
+/*filtros*/
+
 .filtros {
 	display: flex;
-	justify-content: space-around;
+	flex-direction: row;
+	align-items: flex-start;
 	background-color: var(--colorFondoFiltros);
 	border-radius: 10px;
 	padding: 20px;
-	margin: 20px auto;
-	max-width: 600px;
+	margin: 20px;
+	margin-left: 140px;
+	max-width: 100%;
+	box-shadow: var(--sombraHoverCard);
+	position: absolute;
+	left: 0;
 }
 
 .h5-filtros {
 	font-size: 30px;
 	cursor: pointer;
+	margin-top: 10px;
 }
 
-
-
-
-form {
+.filtros form {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	width: 100%;
-	max-width: 500px;
+	max-width: 100%;
 	justify-content: center;
 	gap: 10px;
 }
 
-label {
+.fila-horizontal {
 	display: flex;
-	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+}
+
+label {
 	margin-bottom: 8px;
+	margin-left: 50px;
 	margin-top: 15px;
 	font-weight: bold;
+}
+
+.filtros form input[type="text"] {
+	height: 30px;
+	font-size: 15px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	color: #333;
+	margin-bottom: 10px;
+	width: 620px;
 }
 
 select {
@@ -104,8 +126,9 @@ select {
 }
 
 .boton-filtros {
-	margin-top: 15px;
-	height: 30px;
+	height: 35px;
+	width: 60px;
+	margin-left: 10px;
 	border: none;
 	border-radius: 5px;
 	background-color: var(--colorBtnFiltros);
@@ -115,50 +138,19 @@ select {
 	transition: background-color 0.3s ease;
 }
 
-
 .boton-filtros:hover {
 	background-color: var(--hoverFiltrar);
 }
 
-/*
-.boton-filtros:active {
-    background-color: #003d7a;
-}
-*/
 
-.filtros form input[type="text"],
-.filtros form input[type="number"],
-.filtros form input[type="date"] {
-	height: 30px;
-	font-size: 15px;
-	border-radius: 5px;
-	border: 1px solid #ccc;
-	padding: 5px;
-	color: #333;
-	margin-bottom: 10px;
-}
-
-.filtros form .form-group {
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
-}
-
-.filtros form .form-group label {
-	justify-content: flex-start;
-	font-size: 14px;
-}
-
-.filtros {
-	box-shadow: var(--sombraHoverCard);
-}
-
+/*cards*/
 
 .contenedor-tarjetas {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
 	justify-content: center;
+	margin-top: 100px;
 }
 
 .card {
