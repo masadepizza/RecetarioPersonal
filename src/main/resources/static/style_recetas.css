@@ -16,7 +16,7 @@
 
 body,
 html {
-	background-image: url(images/fondirecetas.PNG);
+	background-image: url(images/fondo_recetas.PNG);
 	background-size: cover;
 	/* Para que la imagen cubra todo el fondo */
 	background-attachment: fixed;
