@@ -1,4 +1,9 @@
-/*HACER ROOT CON VARIABLES*/
+:root{
+	--colorGuardar:rgb(142, 186, 124);
+	--hoverGuardar:#218838;
+	--colorBorrar:rgb(186, 124, 124);
+	--hoverBorrar:#882121;
+}
 
 body {
     font-family: Arial, sans-serif;
@@ -10,7 +15,6 @@ body {
     background-repeat: no-repeat; /* Para que la imagen no se repita */
     background-position: center; /* Para centrar la imagen */
     display: none;
-
 }
 
 
@@ -28,7 +32,6 @@ main {
 
 h1 {
     color: #343a40;
-    /*color: aliceblue;*/
 	margin-left: 90px;
 	margin-bottom: 30px;
 	margin-top: 30px;
@@ -62,7 +65,7 @@ textarea {
 }
 
 input[type="submit"] {
-    background-color: rgb(142, 186, 124);
+    background-color: var(--colorGuardar);
     color: aliceblue;
     padding: 10px;
     border: none;
@@ -74,11 +77,11 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #218838;
+    background-color: var(--hoverGuardar);
 }
 
 button{
-    background-color: rgb(186, 124, 124);
+    background-color: var(--colorBorrar);
     color: aliceblue;
     padding: 10px;
     border: none;
@@ -91,7 +94,7 @@ button{
 }
 
 button:hover {
-    background-color: #882121;
+    background-color: var(--hoverBorrar);
 }
 
 
@@ -174,5 +177,3 @@ body {
     font-size: 24px;
     font-family: Arial, sans-serif;
 }
-
-
