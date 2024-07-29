@@ -18,7 +18,7 @@
 	<main>
 		<h1 class="h1">Todas las recetas</h1>
 		<div class="filtros">
-			<h5 class="h5-filtros" onclick="toggleFiltros()">Filtrar por...</h5>
+			<h5 class="h5-filtros" onclick="toggleFiltros()">Filtrar recetas</h5>
 			<div id="filtros-form" class="filtros-form" style="display: none;">
 				<form th:action="@{/menu_recetas}" method="get">
 
@@ -71,7 +71,7 @@
 
 
 
-	<!--para el h5 de los filtros al clicarlo-->
+	<!--funcion clic h5-->
 	<script>
 		function toggleFiltros() {
 			var filtrosForm = document.getElementById("filtros-form");
