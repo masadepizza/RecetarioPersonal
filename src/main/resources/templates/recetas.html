@@ -18,31 +18,31 @@
 	<main>
 		<h1 class="h1">Todas las recetas</h1>
 		<div class="filtros">
-			<h5 class="h5-filtros" onclick="toggleFiltros()">Filtrar recetas</h5>
-			<div id="filtros-form" class="filtros-form" style="display: none;">
-				<form th:action="@{/menu_recetas}" method="get">
+	<h5 class="h5-filtros" onclick="toggleFiltros()">Filtrar recetas</h5>
+	<div id="filtros-form" class="filtros-form" style="display: none;">
+		<form th:action="@{/menu_recetas}" method="get">
+			<label for="ingrediente">Ingrediente</label>
+			<input type="text" name="ingrediente" id="ingrediente" placeholder="Buscar por ingrediente">
 
-					<label for="ingrediente">Ingrediente</label>
-					<input type="text" name="ingrediente" id="ingrediente" placeholder="Buscar por ingrediente">
+			<div class="fila-horizontal">
+				<label for="dificultad">Dificultad</label>
+				<select name="dificultad" id="dificultad">
+					<option value="" th:text="'Todas las dificultades'">Todas las dificultades</option>
+					<option th:each="dificultad : ${atr_lista_dificultades}" th:value="${dificultad.id}" th:text="${dificultad.dificultad}"></option>
+				</select>
 
-					<label for="dificultad">Dificultad</label>
-					<select name="dificultad" id="dificultad">
-						<option value="" th:text="'Todas las dificultades'">Todas las dificultades</option>
-						<option th:each="dificultad : ${atr_lista_dificultades}" th:value="${dificultad.id}"
-							th:text="${dificultad.dificultad}"></option>
-					</select>
+				<label for="tipo">Tipo</label>
+				<select name="tipo" id="tipo">
+					<option value="" th:text="'Todos los tipos'">Todos los tipos</option>
+					<option th:each="tipo : ${atr_lista_tipos}" th:value="${tipo.id}" th:text="${tipo.tipo}"></option>
+				</select>
 
-					<label for="tipo">Tipo</label>
-					<select name="tipo" id="tipo">
-						<option value="" th:text="'Todos los tipos'">Todos los tipos</option>
-						<option th:each="tipo : ${atr_lista_tipos}" th:value="${tipo.id}" th:text="${tipo.tipo}">
-						</option>
-					</select>
-
-					<button type="submit" class="boton-filtros">Filtrar</button>
-				</form>
+				<button type="submit" class="boton-filtros">Filtrar</button>
 			</div>
-		</div>
+		</form>
+	</div>
+</div>
+
 		<div class="contenedor-tarjetas">
 			<div th:if="${atr_lista_recetas}" class="contenedor-tarjetas">
 				<div th:each="receta : ${atr_lista_recetas}" class="card">
