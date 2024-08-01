@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="recetas")
 public class Receta {
-	
+	//rehacer cantidades y tiempo horas y mins (q aparezca h y min x defecto)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
