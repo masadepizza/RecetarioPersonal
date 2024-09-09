@@ -27,13 +27,15 @@
 
 			<div class="detalle-receta">
 				<img th:src="${receta.imagenUrl}" alt="Imagen de la Receta" />
-				<div class="info-receta">
-					<p><span>🥕 Ingredientes:</span> <span th:text="${receta.ingredientes}">Ingredientes</span></p>
-					<p><span>🕔 Duración:</span> <span th:text="${receta.duracion}">Duración</span></p>
-					<p><span>⭐ Dificultad:</span> <span th:text="${receta.dificultad.dificultad}">Dificultad</span></p>
-					<p><span>🍲 Tipo:</span> <span th:text="${receta.tipo.tipo}">Tipo</span></p>
-					<p><span>🍴 Raciones:</span> <span th:text="${receta.racion.raciones}">Racion</span></p>
-				</div>
+
+			</div>
+			
+			<div class="info-receta">
+				<p><span>🥕 Ingredientes:</span> <span th:text="${receta.ingredientes}">Ingredientes</span></p>
+				<p><span>🕔 Duración:</span> <span th:text="${receta.duracion}">Duración</span></p>
+				<p><span>⭐ Dificultad:</span> <span th:text="${receta.dificultad.dificultad}">Dificultad</span></p>
+				<p><span>🍲 Tipo:</span> <span th:text="${receta.tipo.tipo}">Tipo</span></p>
+				<p><span>🍴 Raciones:</span> <span th:text="${receta.racion.raciones}">Racion</span></p>
 			</div>
 
 
